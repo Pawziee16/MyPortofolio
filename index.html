@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fauzi — Personal Journal</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg: #FFFFFF;
+  --white: #F0F0F0;
+  --dark: #333333;
+  --gray: #707070;
+  --orange: #707070;
+  --line: #B0B0B0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--dark);
+  font-family: 'DM Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: 88%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* NAVIGATION */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 27px 6%;
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.logo span {
+  color: var(--orange);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  font-size: 13px;
+}
+
+.nav-links a {
+  color: var(--gray);
+  transition: .3s;
+}
+
+.nav-links a:hover {
+  color: var(--orange);
+}
+
+/* HERO */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  align-items: center;
+  gap: 60px;
+  padding: 90px 0;
+}
+
+.eyebrow {
+  font: 11px 'DM Mono', monospace;
+  color: var(--orange);
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  font: 600 clamp(50px, 8vw, 85px)/1.05 'Playfair Display', serif;
+  margin: 25px 0;
+}
+
+.hero h1 span {
+  color: var(--orange);
+}
+
+.hero p {
+  color: var(--gray);
+  line-height: 1.9;
+  max-width: 450px;
+}
+
+.hero-btn {
+  display: inline-block;
+  margin-top: 30px;
+  background: var(--dark);
+  color: white;
+  padding: 14px 23px;
+  font-size: 12px;
+  transition: .3s;
+}
+
+.hero-btn:hover {
+  background: var(--orange);
+  transform: translateY(-3px);
+}
+
+.hero-image {
+  background: var(--white);
+  padding: 12px;
+  transform: rotate(3deg);
+  box-shadow: 0 15px 40px #00000010;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+}
+
+/* SECTION */
+
+section {
+  padding: 85px 0;
+  border-top: 1px solid var(--line);
+}
+
+.section-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.section-top h2 {
+  font: 600 42px 'Playfair Display', serif;
+}
+
+.section-top span {
+  font: 11px 'DM Mono', monospace;
+  color: var(--orange);
+}
+
+/* ABOUT */
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.about p {
+  color: var(--gray);
+  line-height: 2;
+  margin-bottom: 20px;
+}
+
+.about-details {
+  background: var(--white);
+  padding: 30px;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+
+.detail span:first-child {
+  color: var(--gray);
+}
+
+.detail span:last-child {
+  font-weight: 600;
+  text-align: right;
+}
+
+/* PLACES */
+
+.places-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.place-card {
+  background: var(--white);
+  overflow: hidden;
+  transition: .3s;
+}
+
+.place-card:hover {
+  transform: translateY(-6px);
+}
+
+.place-card img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  display: block;
+}
+
+.place-info {
+  padding: 23px;
+}
+
+.place-info small {
+  color: var(--orange);
+  font: 11px 'DM Mono', monospace;
+}
+
+.place-info h3 {
+  font: 600 24px 'Playfair Display', serif;
+  margin: 12px 0;
+}
+
+.place-info p {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+.map-link {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ADDRESS */
+
+.address-card {
+  background: var(--dark);
+  color: white;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.address-card h3 {
+  font: 600 38px 'Playfair Display', serif;
+  margin: 18px 0;
+}
+
+.address-card p {
+  color: #bcbcb3;
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.address-label {
+  color: var(--orange);
+  font: 11px 'DM Mono', monospace;
+}
+
+.address-right {
+  border-left: 1px solid #55554d;
+  padding-left: 35px;
+}
+
+.address-right h4 {
+  color: var(--orange);
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+
+.address-right a {
+  display: inline-block;
+  margin-top: 20px;
+  background: var(--orange);
+  color: white;
+  padding: 13px 20px;
+  font-size: 12px;
+}
+
+/* FOOTER */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 0;
+  font: 11px 'DM Mono', monospace;
+  color: var(--gray);
+}
+
+/* ANIMATION */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: .8s;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+  .nav-links {
+    gap: 12px;
+    font-size: 10px;
+  }
+
+  .hero,
+  .about,
+  .address-card {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 60px 0;
+    gap: 40px;
+  }
+
+  .hero-image {
+    max-width: 320px;
+    margin: auto;
+  }
+
+  .places-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-top h2 {
+    font-size: 30px;
+  }
+
+  .address-card {
+    padding: 30px 22px;
+  }
+
+  .address-right {
+    border-left: none;
+    border-top: 1px solid #55554d;
+    padding: 25px 0 0;
+  }
+
+}
+
+/* CONTACT */
+
+.contact-section {
+  background: #e9e3d8;
+  padding: 50px;
+}
+
+.contact-intro {
+  margin-bottom: 35px;
+}
+
+.contact-intro h2 {
+  font: 600 clamp(40px, 6vw, 65px)/1.1 'Playfair Display', serif;
+  margin: 20px 0;
+}
+
+.contact-intro p {
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+/* ICON CONTACT */
+
+.contact-links {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+  width: 100%;
+}
+
+.contact-links a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 25px 10px;
+  background: #fff;
+  border: 1px solid #B0B0B0;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.contact-links a:hover {
+  background: #333;
+  transform: translateY(-5px);
+}
+
+.contact-icon {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F0F0F0;
+  color: #333;
+  font-size: 25px;
+  border-radius: 12px;
+}
+
+.contact-info h4 {
+  color: #333;
+  font-size: 14px;
+}
+
+.contact-info p {
+  color: #707070;
+  font-size: 11px;
+}
+
+@media (max-width: 700px) {
+  .contact-section {
+    padding: 30px 20px;
+  }
+
+  .contact-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">Fauzi Akbar<span>.</span></div>
+
+  <div class="nav-links">
+    <a href="#about">About Me</a>
+    <a href="#places">Places</a>
+    <a href="#address">Address</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="container">
+<header class="hero">
+
+  <div>
+    <div class="eyebrow">PERSONAL JOURNAL — 2026</div>
+
+    <h1>
+      Hello,<br>
+      I'm <span>Fauzi.</span>
+    </h1>
+
+    <p>
+      Welcome to my portofolio.
+      Sebuah tempat untuk mengenal saya,
+      melihat perjalanan, dan menemukan
+      tempat-tempat yang pernah saya kunjungi.
+    </p>
+
+    <a href="#about" class="hero-btn">
+      DISCOVER MORE ↗
+    </a>
+  </div>
+
+  <div class="hero-image">
+    <img src="img/foto.jpg" alt="Foto Fauzi">
+  </div>
+
+</header>
+</div>
+
+<!-- ABOUT ME -->
+<section id="about">
+<div class="container reveal">
+
+  <div class="section-top">
+    <h2>About Me.</h2>
+    <span>01 — INTRODUCTION</span>
+  </div>
+
+  <div class="about">
+
+    <div>
+      <p>
+        Halo, perkenalkan nama saya Muhammad Fauzi Akbar.
+        Saya adalah seorang mahasiswa universitas Pamulang
+        yang
+        memiliki ketertarikan pada kebebasan berpikir dan kebebasan berekspresi.
+        Saya memiliki minat yang besar dalam explorasi, terutama alam dan budaya.
+        Saya percaya bahwa setiap perjalanan adalah kesempatan untuk belajar dan tumbuh.
+      </p>
+
+      <p>
+        Saya senang mempelajari hal-hal baru,
+        mengeksplorasi berbagai tempat,
+        dan mendapatkan pengalaman baru
+        dari setiap perjalanan.
+      </p>
+    </div>
+
+    <div class="about-details">
+
+      <div class="detail">
+        <span>Full Name</span>
+        <span>Fauzi Akbar</span>
+      </div>
+
+      <div class="detail">
+        <span>Occupation</span>
+        <span>Student</span>
+      </div>
+
+      <div class="detail">
+        <span>Interest</span>
+        <span>Exploration, Nature, Culture</span>
+      </div>
+
+      <div class="detail">
+        <span>Nationality</span>
+        <span>Indonesia</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- PLACES I'VE VISITED -->
+<section id="places">
+<div class="container reveal">
+
+  <div class="section-top">
+    <h2>Places I've Visited.</h2>
+    <span>02 — EXPLORATION</span>
+  </div>
+
+  <div class="places-grid">
+
+    <div class="place-card">
+      <img src="img/puncak slamet.jpeg" alt="Tempat pertama">
+
+      <div class="place-info">
+        <small>DESTINATION / 001</small>
+        <h3>Gunung Slamet</h3>
+        <p>
+          Pengalaman pertama mendaki gunung diatas 3000 mdpl. Rasanya luar biasa
+          dapat melihat lautan awan dan
+          menikmati keindahan alam pegunungan.
+        </p>
+        <a class="map-link"
+           href="https://maps.google.com/?q=Gunung+Slamet"
+           target="_blank">
+          EXPLORE LOCATION ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <img src="img/karang.jpeg" alt="Tempat kedua">
+
+      <div class="place-info">
+        <small>DESTINATION / 002</small>
+        <h3>Gunung Karang</h3>
+        <p>
+          Pengalaman pertama mendaki gunung dan awal mula saya suka dengan alam
+        </p>
+        <a class="map-link"
+           href="https://maps.google.com/?q=Gunung+Karang"
+           target="_blank">
+          EXPLORE LOCATION ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <img src="img/curug kiara.jpeg" alt="Tempat ketiga">
+
+      <div class="place-info">
+        <small>DESTINATION / 003</small>
+        <h3>Curug Kiara</h3>
+        <p>
+          Salah satu curug cantik yang ada di Bogor. 
+          Tempat ini memiliki pemandangan yang indah dan suasana yang tenang, 
+          cocok untuk bersantai dan menikmati alam.
+        </p>
+        <a class="map-link"
+           href="https://www.google.com/maps/place/Curug+Kiara+Desa+Ci+Asihan+Kb+Bogor/@-6.7153504,106.649437,14z/data=!4m6!3m5!1s0x2e69d3ff18eb4b95:0x26c96dc67626c1!8m2!3d-6.7153497!4d106.6854872!16s%2Fg%2F11g158dymm?entry=ttu&g_ep=EgoyMDI2MTExOC4xIKXMDSoASAFQAw%3D%3D"
+           target="_blank">
+          EXPLORE LOCATION ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <img src="img/walet.jpeg" alt="Tempat keempat">
+
+      <div class="place-info">
+        <small>DESTINATION / 004</small>
+        <h3>Curug Walet</h3>
+        <p>
+          Curug Walet adalah salah satu curug yang indah di Bogor. 
+          Dengan air terjun yang menakjubkan dan suasana alam yang asri, 
+          tempat ini menjadi destinasi favorit bagi para pecinta alam dan fotografi.
+        </p>
+        <a class="map-link"
+           href="https://maps.google.com/?q=Curug+Walet"
+           target="_blank">
+          EXPLORE LOCATION ↗
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ADDRESS -->
+<section id="address">
+<div class="container reveal">
+
+  <div class="section-top">
+    <h2>My Address.</h2>
+    <span>03 — LOCATION</span>
+  </div>
+
+  <div class="address-card">
+
+    <div>
+      <div class="address-label">WHERE I LIVE</div>
+
+      <h3>My Little Place.</h3>
+
+      <p>
+        Saya tinggal di Cikupa,
+        Tangerang, Banten, Indonesia.
+        Tempat yang menjadi bagian
+        dari cerita keseharian saya.
+      </p>
+    </div>
+
+    <div class="address-right">
+      <h4>RESIDENCE INFORMATION</h4>
+
+      <p>Country  : Indonesia</p>
+      <p>Province : Banten</p>
+      <p>City     : Tangerang</p>
+      <p>District : Cikupa</p>
+
+      <a href="https://maps.google.com/?q=Cikupa+Tangerang"
+         target="_blank">
+        OPEN GOOGLE MAPS ↗
+      </a>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container reveal">
+
+    <div class="section-top">
+      <h2>Contact Me.</h2>
+      <span>04 — GET IN TOUCH</span>
+    </div>
+
+    <div class="contact-section">
+
+      <div class="contact-intro">
+        <div class="eyebrow">LET'S CONNECT</div>
+
+        <h2>Let's talk<br>and share ideas.</h2>
+
+        <p>
+          Jangan ragu untuk menghubungi saya.
+          Kamu bisa menemukan saya melalui
+          beberapa platform berikut.
+        </p>
+      </div>
+
+      <div class="contact-links">
+
+        <a href="https://wa.me/6281317427058" target="_blank">
+          <div class="contact-icon">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <div class="contact-info">
+            <h4>WhatsApp</h4>
+            <p>Chat with me</p>
+          </div>
+        </a>
+
+        <a href="https://instagram.com/mhmmdfauziakbr__" target="_blank">
+          <div class="contact-icon">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+          <div class="contact-info">
+            <h4>Instagram</h4>
+            <p>Follow my journey</p>
+          </div>
+        </a>
+
+        <a href="mailto:ziiygy1606@gmail.com">
+          <div class="contact-icon">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div class="contact-info">
+            <h4>Email</h4>
+            <p>Send me an email</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<div class="container">
+<footer>
+  <span>© 2026 FAUZI PERSONAL JOURNAL</span>
+  <span></span>
+</footer>
+</div>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => {
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
